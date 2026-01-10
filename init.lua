@@ -272,9 +272,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				},
 			},
 			keymap = { preset = "super-tab" }, -- Tab complete like in VSC*de
-			sources = {
-				cmdline = {},
-			}
+			cmdline = { enabled = false }
 		})
 	end,
 })
