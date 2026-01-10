@@ -1,0 +1,17 @@
+{
+    "workspace.library": [
+        "/home/bilaii/.config/nvim",
+        "/home/bilaii/.local/share/nvim/site",
+        "/home/bilaii/.local/share/nvim/site/pack/core/opt/nvim-treesitter",
+        "/home/bilaii/.local/share/nvim/site/pack/core/opt/mason.nvim",
+        "/home/bilaii/.local/share/nvim/site/pack/core/opt/mini.pick",
+        "/home/bilaii/.local/share/nvim/site/pack/core/opt/oil.nvim",
+        "/home/bilaii/.local/share/nvim/site/pack/core/opt/neovim",
+        "/usr/share/nvim/site",
+        "/home/bilaii/.local/share/bob/nightly/share/nvim/runtime",
+        "/home/bilaii/.local/share/bob/nightly/share/nvim/runtime/pack/dist/opt/matchit",
+        "/home/bilaii/.local/share/bob/nightly/lib/nvim",
+        "${3rd}/luv/library",
+        "${3rd}/luassert/library"
+    ]
+}

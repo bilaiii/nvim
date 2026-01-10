@@ -85,6 +85,8 @@ return {
 	settings = {
 		Lua = {
 			workspace = {
+				userThirdParty = {os.getenv("HOME") .. ".local/share/LuaAddons"},
+        checkThirdParty = "Apply",
 				library = vim.api.nvim_get_runtime_file("", true),
 			}
 		}
