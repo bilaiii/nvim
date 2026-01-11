@@ -92,6 +92,7 @@ vim.pack.add({
 	-- gh("vzze/cmdline.nvim"),                    -- Comand line suggestions as in Helix
 	-- Misc
 	gh("vyfor/cord.nvim"),                      -- Discord RPC
+	gh("MeanderingProgrammer/render-markdown.nvim"),
 	-- Deps
 	gh("nvim-tree/nvim-web-devicons"),          -- Icons
 	gh("folke/snacks.nvim"),
@@ -114,6 +115,7 @@ require('mini.pick').setup()       -- Multipurpose picker
 require('mini.extra').setup()      -- Extras for Pick
 require('mini.move').setup()       -- Move stuff with <A>
 require('mini.ai').setup()         -- [a]round & [i]nside
+require('mini.git').setup()        -- Git
 -- require('mini.clue').setup()       -- Which-key
 require('mini.starter').setup({    -- Greeter
 	header = logo
