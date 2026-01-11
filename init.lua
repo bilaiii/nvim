@@ -76,6 +76,7 @@ vim.pack.add({
 	-- Completions
 	gh("saghen/blink.cmp"),                     -- Autocomplete
 	gh("rafamadriz/friendly-snippets"),         -- Snippets
+	gh("tpope/vim-endwise"),                    -- Complete `end` & `done`
 	-- Mini
 	gh("nvim-mini/mini.nvim"),
 	-- Visual help
@@ -86,8 +87,9 @@ vim.pack.add({
 	gh("brenoprata10/nvim-highlight-colors"),   -- CSS Color highlighting
 	gh("lukas-reineke/indent-blankline.nvim"),  -- Indentation guides
 	gh("folke/twilight.nvim"),                  -- Focus mode
+	gh("lewis6991/gitsigns.nvim"),							-- Git gutters
 	gh("rachartier/tiny-glimmer.nvim"),         -- Visual feedback on common actions
-	gh("vzze/cmdline.nvim"),                    -- Comand line suggestions as in Helix
+	-- gh("vzze/cmdline.nvim"),                    -- Comand line suggestions as in Helix
 	-- Misc
 	gh("vyfor/cord.nvim"),                      -- Discord RPC
 	-- Deps
@@ -111,6 +113,7 @@ require('mini.pairs').setup()      -- Autopair
 require('mini.pick').setup()       -- Multipurpose picker
 require('mini.extra').setup()      -- Extras for Pick
 require('mini.move').setup()       -- Move stuff with <A>
+require('mini.ai').setup()         -- [a]round & [i]nside
 -- require('mini.clue').setup()       -- Which-key
 require('mini.starter').setup({    -- Greeter
 	header = logo
@@ -123,7 +126,6 @@ require("ibl").setup({
 	}
 })
 
-require('cmdline').setup({})
 require('tiny-glimmer').setup({
 	overwrite = {
 		undo = {enabled = true},
@@ -134,13 +136,25 @@ require('todo-comments').setup({})
 require('twilight').setup()
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(opts)
-    if opts.data.spec.name == 'cord.nvim' and opts.data.kind == 'update' then 
+    if opts.data.spec.name == 'cord.nvim' and opts.data.kind == 'update' then
       vim.cmd 'Cord update'
     end
   end
 })
 
-require('nvim-highlight-colors').setup({})
+require('nvim-highlight-colors').setup({
+	virtual_symbol_position = 'inline',
+	render = 'background',
+	enable_hex = true,
+	enable_short_hex = true,
+	enable_rgb = true,
+	enable_hsl = true,
+	enable_ansi = true,
+  enable_hsl_without_function = true,
+	enable_var_usage = true,
+	enable_named_colors = true,
+	enable_tailwind = false,
+})
 
 require("which-key").setup({
 	preset = "helix",
@@ -269,6 +283,39 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 			completion = {
 				ghost_text = {
 					enabled = false, -- Inline completion options
+				},
+				menu = {
+					draw = {
+						components = {
+							-- customize the drawing of kind icons
+							kind_icon = {
+								text = function(ctx)
+									-- default kind icon
+									local icon = ctx.kind_icon
+									-- if LSP source, check for color derived from documentation
+									if ctx.item.source_name == "LSP" then
+										local color_item = require("nvim-highlight-colors").format(ctx.item.documentation, { kind = ctx.kind })
+										if color_item and color_item.abbr ~= "" then
+											icon = color_item.abbr
+										end
+									end
+									return icon .. ctx.icon_gap
+								end,
+								highlight = function(ctx)
+									-- default highlight group
+									local highlight = "BlinkCmpKind" .. ctx.kind
+									-- if LSP source, check for color derived from documentation
+									if ctx.item.source_name == "LSP" then
+										local color_item = require("nvim-highlight-colors").format(ctx.item.documentation, { kind = ctx.kind })
+										if color_item and color_item.abbr_hl_group then
+											highlight = color_item.abbr_hl_group
+										end
+									end
+									return highlight
+								end,
+							},
+						},
+					},
 				},
 			},
 			keymap = { preset = "super-tab" }, -- Tab complete like in VSC*de
