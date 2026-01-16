@@ -20,7 +20,7 @@ vim.opt.signcolumn = "yes"
 
 -- Visual
 vim.opt.termguicolors = true
-vim.o.winborder = 'none'
+vim.o.winborder = 'single'
 
 vim.opt.undofile = true
 
@@ -95,6 +95,7 @@ vim.pack.add({
 	gh("MeanderingProgrammer/render-markdown.nvim"),
 	-- Deps
 	gh("nvim-tree/nvim-web-devicons"),          -- Icons
+	gh("rachartier/tiny-devicons-auto-colors.nvim"),
 	gh("folke/snacks.nvim"),
 	gh("nvim-lua/plenary.nvim"),
 	gh("MunifTanjim/nui.nvim"),
@@ -122,6 +123,7 @@ require('mini.starter').setup({    -- Greeter
 })
 
 
+require('tiny-devicons-auto-colors').setup()
 require("ibl").setup({
 	indent = {
 		char = "┊"
@@ -160,7 +162,7 @@ require('nvim-highlight-colors').setup({
 
 require("which-key").setup({
 	preset = "helix",
-	win = { border = 'none' }
+	win = { border = 'single' }
 })
 
 -- FFF
@@ -219,7 +221,7 @@ require('lualine').setup {
 -- Treesitter
 
 require "nvim-treesitter.configs".setup({
-	ensure_installed = { "lua", "python", "rust", "html", "css", "javascript" },
+	ensure_installed = { "lua", "python", "rust", "html", "css", "javascript" , "gdscript" },
 	highlight = { enable = true },
 	auto_install = true,
 	folds = {
@@ -239,6 +241,7 @@ vim.lsp.enable(
 		"rust_analyzer",
 		"cssls",
 		"html",
+		"gdscript",
 	}
 )
 

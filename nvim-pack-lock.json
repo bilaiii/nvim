@@ -12,6 +12,10 @@
       "rev": "05d7154df41869864dc2a6b04c68a655a9c089dc",
       "src": "https://github.com/vyfor/cord.nvim"
     },
+    "devicon-colorscheme.nvim": {
+      "rev": "de03970159817b40d66945849e9ac3380f58b67f",
+      "src": "https://github.com/dgox16/devicon-colorscheme.nvim"
+    },
     "fff.nvim": {
       "rev": "5ab271ea9da084495d18e3f90f47aa6a87289b01",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
@@ -67,6 +71,10 @@
     "snacks.nvim": {
       "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
       "src": "https://github.com/folke/snacks.nvim"
+    },
+    "tiny-devicons-auto-colors.nvim": {
+      "rev": "51f548421f8a74680eff27d283c9d5ea6e8d0074",
+      "src": "https://github.com/rachartier/tiny-devicons-auto-colors.nvim"
     },
     "tiny-glimmer.nvim": {
       "rev": "624e8c303612f4ebb30820cf86d48d5814460a11",
